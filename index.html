@@ -41,10 +41,10 @@
   let startX;
   let scrollLeft;
 
-  slider.addEventListener('mousedown', (e) => {
+  slider.addEventListener('mousedown', (event) => {
     isDown = true;
     slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
+    startX = event.pageX - slider.offsetLeft;
     scrollLeftOfSlider = slider.scrollLeft;
   });
 
@@ -59,10 +59,10 @@
     slider.classList.remove('active');
   });
 
-  slider.addEventListener('mousemove', (e) => {
+  slider.addEventListener('mousemove', (event) => {
     if(!isDown) return; // stop the function from running
-    e.preventDefault(); // preventing from selecting text inside div when in mousedown and moving
-    const x = e.pageX - slider.offsetLeft;
+    event.preventDefault(); // preventing from selecting text inside div when in mousedown and moving
+    const x = event.pageX - slider.offsetLeft;
     const walk = (x - startX) * 3;
     slider.scrollLeft = scrollLeftOfSlider - walk;
   });
